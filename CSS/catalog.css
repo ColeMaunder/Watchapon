@@ -1,4 +1,8 @@
- .main-content {
+body {
+
+    padding-bottom: 10vw ;
+
+} .main-content {
     
     grid-area: main;
     display: flex;
@@ -6,49 +10,88 @@
     grid-template-rows: auto auto 1fr;
     grid-template-columns: 1fr;
     grid-template-areas: 
-        "displayHeader"
-        "display";
+        "header"
+        "display"
+        "footer";
  }
- #displayAria {
-        grid-area: projects;
-        text-align: center;
-        padding: 2rem;
-        width: 100vw;
-        
-       
-        .displayItems{
+#displayHeader {
+    grid-area: header;
+    width: 100vw;
+    height: 14vw;
+    background-color: yellow;
+    font-size: 60pt ;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 200;
+    padding-left: 3vw;
+}
+#displayAria{
+    grid-area: display;
+    
 
-            display: flex;
+}
+ .displayRow {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    padding-top: 2vw;
+    width: 100vw;
+    width: 1p;
+    
+    align-items: center;
+    justify-content: center;
+    .displayItems{
+        padding: 0;
+        display: flex;
         list-style: none; 
         padding: 0;       
         margin: 0;
-        gap: 20px; 
-            .project{
-                width: 20vw;
-                
-                .project-link{
-                    background-color: #a51212bb;
-                    border-color: #0e0e0e00;
-                    border-width: 5px;
-                    .project-image{
-                        padding-top: 3vw;
-                        width:15vw;
-                        height: 20vh;
-                    }
-                    .project-image:hover{
-                        cursor: pointer;
-                    }
-                }
+        gap: 2vw; 
+            
+        }
+}
+#displayFooter {
+    grid-area: footer;
+    background-color: yellow;
+    width: 100vw;
+    height: 10vw;
+    position: fixed;
+    bottom: 0;
+    #backBtn{
+        position: fixed;
+        height: 9vw;
+        width: 9vw;
+        right : 0;
+        bottom: 0;
+    }
+}
 
-                .project-name{
-                    font-size: 3rem;
-                    text-align: center;
-                    padding-bottom: 2vw;
-                }
-            }
+.show{
+    
+    .project-link{
+        background-color: #ffffffbb;
+        border-color: #000000;
+        border-width: 5px;
+        .project-image{
 
-            .right {
-                margin-left: auto;
-            }
+            width:15vw;
+            aspect-ratio: 1 / 1;
         }
     }
+
+    .project-name{
+        font-size: 3rem;
+        text-align: center;
+        padding-bottom: 2vw;
+    }
+}
+.scrollBtn{
+    width: 4vw;
+    aspect-ratio: 1 / 1;
+    padding: 1vw;
+    margin-bottom: 5vw;
+    margin-right: 1.5vw;
+    margin-left: 1.5vw;
+    border-width: 5px;
+    border-color: #000000;
+    background-color: aliceblue;
+}
