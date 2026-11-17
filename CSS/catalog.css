@@ -1,8 +1,4 @@
-body {
-
-    padding-bottom: 10vw ;
-
-} .main-content {
+.main-content {
     
     grid-area: main;
     display: flex;
@@ -19,49 +15,69 @@ body {
     width: 100vw;
     height: 14vw;
     background-color: yellow;
-    font-size: 60pt ;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-weight: 200;
-    padding-left: 3vw;
+    
+    h1{
+        color: #000000;
+        font-size: 100pt ;
+        font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-weight: 200;
+        padding-left: 3vw;
+    }
+    
 }
 #displayAria{
     grid-area: display;
     
+.displaySection{
+    padding-top: 1vw;
+    width: 100vw;
+    width: 1p;
 
+    .displayHeader{
+        font-size: 3rem;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        padding-left: 9vw;
+        padding-bottom: 0.5vw;
+    }
+}
 }
  .displayRow {
+    
     display: flex;
     flex-direction: row;
     text-align: center;
-    padding-top: 2vw;
-    width: 100vw;
-    width: 1p;
     
     align-items: center;
-    justify-content: center;
-    .displayItems{
-        padding: 0;
-        display: flex;
-        list-style: none; 
-        padding: 0;       
-        margin: 0;
-        gap: 2vw; 
-            
-        }
+    
 }
+
+.displayItems{
+    transform: translateX(-8.9%) ;
+    padding: 0;
+    display: flex;
+    list-style: none; 
+    padding: 0;       
+    margin: 0;
+    gap: 2vw; 
+        
+}
+ .displayRow[short = "true"]{.displayItems{
+    transform: translateX(8.9%) ;
+
+}}
 #displayFooter {
     grid-area: footer;
     background-color: yellow;
     width: 100vw;
-    height: 10vw;
-    position: fixed;
-    bottom: 0;
+    height: 11vw;
+    display: flex;
+    justify-content: flex-end;
     #backBtn{
-        position: fixed;
+        
         height: 9vw;
         width: 9vw;
-        right : 0;
-        bottom: 0;
+        margin: 1vw;
+        margin-right: 2vw;
     }
 }
 
@@ -70,16 +86,17 @@ body {
     .project-link{
         background-color: #ffffffbb;
         border-color: #000000;
-        border-width: 5px;
+        border-width: 10px;
         .project-image{
 
             width:15vw;
-            aspect-ratio: 1 / 1;
+            aspect-ratio: 1 / 1.39;
         }
     }
 
     .project-name{
-        font-size: 3rem;
+        height: 50px;
+        font-size: 1.5rem;
         text-align: center;
         padding-bottom: 2vw;
     }
@@ -88,10 +105,16 @@ body {
     width: 4vw;
     aspect-ratio: 1 / 1;
     padding: 1vw;
-    margin-bottom: 5vw;
-    margin-right: 1.5vw;
-    margin-left: 1.5vw;
+    margin-bottom: 3.5vw;
     border-width: 5px;
     border-color: #000000;
     background-color: aliceblue;
+}
+.backScrollBtn{
+    position: absolute;
+    left: 0.5vw;
+}
+.forwerdScrollBtn{
+    position: absolute;
+    right: 0.4vw;
 }

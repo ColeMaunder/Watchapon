@@ -6,9 +6,23 @@
 html {
   scroll-behavior: smooth;
 }
+html, body {
+
+  width: 100%;
+  overflow-x: hidden;
+}
+body{
+  background-color: black;
+}
+h1,h2,h3,p{
+  color: #ffffff;
+}
 button:hover{
   cursor: pointer;
 }
 .disable{
     visibility: hidden;
+}
+#myDiv {
+  white-space: pre-line;
 }
