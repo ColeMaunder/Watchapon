@@ -1,0 +1,125 @@
+#machine{
+    display: flex;
+    flex-direction: column;
+}
+
+#window{
+    width: 100vw;
+    height: 90vh;
+    padding: 2vw;
+    background-color: brown;
+    display: flex;
+    display: grid;
+    grid-template-rows:  5fr 1fr;
+    grid-template-columns: 2fr 3fr;
+    grid-template-areas: 
+        "largeDisplay smallDisplay"
+        "pannal pannal";
+  
+}
+
+#displayLarge{
+    grid-area: largeDisplay;
+    display: flex;
+    flex-direction: column;
+     width:20vw;
+    aspect-ratio: 1 / 1.39;
+    gap: 2vh;
+    #heading{
+        font-size: 100pt;
+    }
+}
+#displaysSmall{
+    grid-area: smallDisplay;
+    display: flex;
+    flex-direction: column;
+    gap: 3vw;
+    .row{
+        display: flex;
+        gap: 3vh;
+    }
+    .display{
+        width:8vw;
+        aspect-ratio: 1 / 1.39;
+    }
+}
+#data{
+    grid-area: pannal;
+    h2{
+        color: #1083e0;
+    } 
+}
+
+
+#frontPanel{
+    height: 90vh;
+    width: 100vw;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    display: grid;
+    grid-template-rows:  1fr 3fr 4fr;
+    grid-template-columns: 2fr  4fr;
+    grid-template-areas: 
+        "catalog-Aria  coin-Aria"
+        "knob-Aria  knob-Aria"
+        "prize-Aria  return-Aria";
+}
+
+#catalog{
+    grid-area: catalog-Aria;
+    display: flex;
+    justify-content: left;
+    align-items: top;
+    padding-left: 5vw;
+    padding-top: 5vh;
+    #catalogBtn{
+        height: 16vh;
+        width: 8vw;
+    }
+}
+#coin{
+    grid-area: coin-Aria;
+    display: flex;
+    justify-content: right;
+    align-items: top;
+    padding-right: 10vw;
+    padding-top: 5vh;
+    #coinSlot{
+        height: 10vh;
+        width: 5vw;
+    }
+}
+#knobAria{
+    grid-area: knob-Aria;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    #knob{
+        height: 30vh;
+        width: 15vw;
+    }
+
+}
+#gift{
+    grid-area: prize-Aria;
+    display: flex;
+    justify-content: left;
+    align-items: top;
+    padding-left: 5vw;
+    #giftOut{
+        height: 35vh;
+        width: 20vw;
+    }
+}
+#return{
+    grid-area: return-Aria;
+    display: flex;
+    justify-content: right;
+    align-items: top;
+    padding-right: 5vw;
+    padding-top: 4vh;
+    #coinReturn{
+        height: 20vh;
+        width: 10vw;
+    }
+}

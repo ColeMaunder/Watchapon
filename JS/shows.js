@@ -45,9 +45,9 @@ async function getShowsByGenre(genre, page = 1, perPage = 30) {
 }
 
 // Usage
-getShowsByGenre("Comedy").then((result) => {
+/*getShowsByGenre("Comedy").then((result) => {
     result.media.forEach((show) => {
         console.log(show.title.english || show.title.romaji, show.relese);
     });
     console.log("More pages?", result.pageInfo.hasNextPage);
-});
+});*/
