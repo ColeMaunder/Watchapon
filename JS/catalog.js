@@ -74,7 +74,7 @@ function createShowCard(rowId, cardId) {
         diaplayName.style.color = show.coverImage.color
 
         displayLink.addEventListener("click", () => {
-        const link = prizeScreen + "?" + show.id;
+        const link = prizeScreen + "?C" + show.id;
         window.location.href = link;
     }, { signal: controllers[rowId].signal });
     }
@@ -94,7 +94,7 @@ function UpdateShowCard(card, show, rowId) {
     diaplayName.textContent = show.title.english || show.title.romaji;
     const displaylink = card.querySelector(".project-link");
     displaylink.addEventListener("click", () => {
-        const link = prizeScreen + "?" + show.id;
+        const link = prizeScreen + "?C" + show.id;
         window.location.href = link;
     }, { signal: controllers[rowId].signal });
 

@@ -1,3 +1,5 @@
+const catalog = "catalog.html"
+const home = "../index.html"
 
 const query = `
   query ExampleQuery($mediaId: Int) {
@@ -14,6 +16,7 @@ const query = `
     hashtag
     meanScore
     bannerImage
+    duration
     startDate {
       year
       month
@@ -50,8 +53,22 @@ async function getShows(mediaId) {
 
 function getId() {
     const queryString = window.location.search;
-    const id = parseInt(queryString.slice(1));
+    const id = parseInt(queryString.slice(2));
     return id;
+}
+
+function SetBack() {
+  const queryString = window.location.search;
+  const lastScreenID = queryString.at(1);
+  var lastScreen = home
+  if (lastScreenID === 'C') {
+    lastScreen = catalog
+  }
+  const back = document.querySelector("#backBtn");
+  back.addEventListener("click", () => {
+    window.location.href = lastScreen;
+  }, {});
+
 }
 async function SetUpPage() {
     const show = await getShows(getId());
@@ -69,7 +86,14 @@ async function SetUpPage() {
     
 
     const summery = document.querySelector("#summery");
-    summery.innerText = show.description.replaceAll("<br>","")/*.replaceAll("<b>","").replaceAll("</b>","");*/;
+  summery.innerText = show.description.replaceAll("<br>", "")/*.replaceAll("<b>","").replaceAll("</b>","");*/;
+  const ganre = document.querySelector("#ganre");
+  ganre.innerText = show.genres;
+
+  
+  const duration = document.querySelector("#duration");
+  duration.innerText = show.duration;
 }
 
 SetUpPage()
+SetBack()

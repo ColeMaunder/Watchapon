@@ -110,6 +110,9 @@
         height: 35vh;
         width: 20vw;
     }
+    .ready{
+        background-color: blueviolet;
+    }
 }
 #return{
     grid-area: return-Aria;
