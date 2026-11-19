@@ -22,8 +22,6 @@
     grid-area: largeDisplay;
     display: flex;
     flex-direction: column;
-     width:20vw;
-    aspect-ratio: 1 / 1.39;
     gap: 2vh;
     #heading{
         font-size: 100pt;
@@ -38,10 +36,14 @@
         display: flex;
         gap: 3vh;
     }
-    .display{
-        width:8vw;
-        aspect-ratio: 1 / 1.39;
-    }
+    
+}
+.display{
+    width:8vw;
+    aspect-ratio: 1 / 1.39;
+}
+#bigDisplay{
+    width:20vw;
 }
 #data{
     grid-area: pannal;

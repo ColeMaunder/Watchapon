@@ -1,4 +1,4 @@
-const queryInputs = { genreIn: ["Action","fantasy","drama","Romance"], perPage: 100, page: 1 ,durationGreater: 0};
+const queryInputs = { genreIn: ["Action", "fantasy", "drama", "Romance"], perPage: 100, page: 1, durationGreater: 0 };
 const criteria = "$genreIn: [String], $durationGreater: Int";
 const criteriaReverse = " genre_in: $genreIn, duration_greater: $durationGreater";
 const prizeScreen = "HTML/prize.html"
@@ -6,13 +6,24 @@ var shows = [];
 const customQuery = `
 query CustomQuery(`+ criteria +`, $page: Int, $perPage: Int) {
   Page(page: $page, perPage: $perPage) {
-    media(`+ criteriaReverse +`,  type: ANIME, sort: POPULARITY_DESC) {
+    media(`+ criteriaReverse +`,  type: ANIME, isAdult: false, sort: POPULARITY_DESC) {
       id
       title {
         romaji
         english
       }
       genres
+    }
+  }
+}
+`;
+const displayQuery = `
+query CustomQuery($page: Int, $perPage: Int) {
+  Page(page: $page, perPage: $perPage) {
+    media( type: ANIME, sort: TRENDING_DESC, isAdult: false) {
+      coverImage {
+      extraLarge
+      }
     }
   }
 }
@@ -78,4 +89,25 @@ function configerGift(id) {
     }
 }
 
+async function setupDisplay() {
+  const displays = document.querySelectorAll(".display");
+  var dispArr = [];
+  const rawData = sessionStorage.getItem("displays");
+  if (rawData != null) {
+    console.log("using old display shows")
+    const parsedShows = rawData ? JSON.parse(rawData) : null;
+    dispArr = parsedShows.shows;
+  } else {
+    console.log("Geting new display shows")
+    const displayShows = await (getShow({ perPage: displays.length, page: 1 }, displayQuery));
+    dispArr = await displayShows;
+    const displaysForLater = { shows: dispArr};
+    sessionStorage.setItem("displays",  JSON.stringify(displaysForLater));
+  }
+  for (let index = 0; index < displays.length; index++) {
+      displays[index].src = await dispArr[index].coverImage.extraLarge;
+  }
+  document.querySelector("#loadeScreen").classList.add("disable")
+}
 configerKnob();
+setupDisplay();

@@ -243,13 +243,37 @@ function AddColimb(rowId, cardId) {
 }
 
 async function loadAllGenres() {
+  const rawData = sessionStorage.getItem("shows");
+  if (rawData != null) {
+    const parsedShows = rawData ? JSON.parse(rawData) : null;
+    const today = new Date();
+    const last = new Date(parsedShows.time);
+    console.log(last)
+    showArray = parsedShows.shows;
+
+    /*if (last.getFullYear() != today.getFullYear() ||
+      last.getMonth() != today.getMonth() ||
+      last.getDate() != today.getDate()) {
+      
+      }else{
+      await getNewShows();
+      }*/
+  }else{
+    await getNewShows()
+  }
+}
+async function getNewShows() {
+  console.log("fetched new shows")
   const results = await Promise.all(
     genres.map((genre) => getShowsByGenre(genre, showPerGenre))
     );
 
     showArray = results.map((result) => result.media);
+    const now = new Date();
+    const showsForLater = { shows: showArray, time: now.toISOString() };
+    sessionStorage.setItem("shows", JSON.stringify(showsForLater));
 
-    for (let i = 0; i < showArray.length; i++) {
+  for (let i = 0; i < showArray.length; i++) {
     console.log(`--- ${genres[i]} ---`);
     for (const show of showArray[i]) {
       console.log(show.title.english ?? show.title.romaji);
@@ -272,7 +296,7 @@ async function SetUpScreen() {
 
     await buildScreen();
     console.log('Screen built.');
-    
+    document.querySelector("#loadeScreen").classList.add("disable")
   } catch (error) {
     console.error(error);
   }

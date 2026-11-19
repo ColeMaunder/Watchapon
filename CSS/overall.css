@@ -26,3 +26,32 @@ button:hover{
 #myDiv {
   white-space: pre-line;
 }
+
+.loadeScreen{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    color: #000;
+     display: grid;
+    place-items: center;
+    background-color: #000;  
+}
+#errorScreen{
+  h1{
+    color: #ffffff;
+  }
+}
+#loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #e5e7eb;   
+  border-top-color: #f63b3b;      
+  border-radius: 50%;             
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
