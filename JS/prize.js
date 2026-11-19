@@ -13,7 +13,6 @@ const query = `
     duration
     description
     genres
-    hashtag
     meanScore
     bannerImage
     duration
@@ -26,6 +25,14 @@ const query = `
       english
       romaji
     }
+      seasonYear
+      season
+      status(version: 1)
+      format
+      streamingEpisodes {
+        url
+        site
+      }
   }
 }
 `;
@@ -132,14 +139,38 @@ async function SetUpPage() {
     
 
     const summery = document.querySelector("#summery");
-  summery.innerText = show.description.replaceAll("<br>", "")/*.replaceAll("<b>","").replaceAll("</b>","");*/;
+    summery.innerText = show.description.replaceAll("<br>", "")/*.replaceAll("<b>","").replaceAll("</b>","");*/;
+    
   const ganre = document.querySelector("#ganre");
-  ganre.innerText = show.genres;
+    ganre.innerText = "Ganre: " + show.genres.join(", ");
+    
+   const epesodes= document.querySelector("#episodes");
+    epesodes.innerText = "Epesode Count: " + show.episodes;
 
+    const release = document.querySelector("#release");
+    release.innerText = "Relese Season: " + show.seasonYear + " " + show.season;
+
+    const status = document.querySelector("#status");
+    status.innerText = "Status: " + show.status;
+
+    const format = document.querySelector("#format");
+    format.innerText = "Format: " + show.format;
+    
   
     const duration = document.querySelector("#duration");
-   
-    duration.innerText = show.duration;
+    duration.innerText = "General Minutes Per Episode: " + show.duration;
+
+    const StartWatch = document.querySelector("#start");
+    const start = show.streamingEpisodes[0];
+    if (start.url != null) {
+      StartWatch.addEventListener("click", () => {
+        const link = start.url;
+        window.location.href = link;
+      }, { });
+    }else{
+      StartWatch.classList.add("disable")
+    }
+
     } catch (error) {
     APIError(error);
   }

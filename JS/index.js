@@ -3,6 +3,8 @@ const criteria = "$genreIn: [String], $durationGreater: Int";
 const criteriaReverse = " genre_in: $genreIn, duration_greater: $durationGreater";
 const prizeScreen = "HTML/prize.html"
 var shows = [];
+
+const ganreOptions = ["Action", "Adventure", "Comedy", "Drama", "Ecchi", "Fantasy", "Horror", "Mahou Shoujo", "Mecha", "Music", "Mystery", "Psychological", "Romance", "Sci-Fi", "Slice of Life", "Sports", "Supernatural", "Thriller" ]
 const customQuery = `
 query CustomQuery(`+ criteria +`, $page: Int, $perPage: Int) {
   Page(page: $page, perPage: $perPage) {
