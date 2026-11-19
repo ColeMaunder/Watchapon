@@ -139,7 +139,7 @@ function setUpCoinCase() {
     coin.classList.add('coin');
     coin.setAttribute("coin-val", ganreOptions[index]);
     const coinIcon =  document.createElement('img');
-    coinIcon.src = "../Imiges/Coin.png"
+    coinIcon.src = "./Imiges/Coin.png"
     coinIcon.classList.add("iconCoin")
     const coinText = document.createElement('h3');
     coinText.classList.add("coinText")
