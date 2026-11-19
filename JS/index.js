@@ -1,9 +1,8 @@
-const queryInputs = { genreIn: [], perPage: 100, page: 1, durationGreater: 0 };
+const queryInputs = { genreIn: [""], perPage: 100, page: 1, durationGreater: 0 };
 const criteria = "$genreIn: [String], $durationGreater: Int";
 const criteriaReverse = " genre_in: $genreIn, duration_greater: $durationGreater";
 const prizeScreen = "HTML/prize.html"
 var shows = [];
-
 const ganreOptions = ["Action", "Adventure", "Comedy", "Drama", "Ecchi", "Fantasy", "Horror", "Mahou Shoujo", "Mecha", "Music", "Mystery", "Psychological", "Romance", "Sci-Fi", "Slice of Life", "Sports", "Supernatural", "Thriller" ]
 const customQuery = `
 query CustomQuery(`+ criteria +`, $page: Int, $perPage: Int) {
@@ -73,11 +72,15 @@ function GotoReward(id) {
     window.location.href = link;
 }
 async function configerKnob() {
-    
-    
     const knob = document.querySelector("#knob")
     knob.addEventListener("click", () => {
-        configerGift()
+      configerGift()
+      gsap.to(knob, {
+        rotation: "-=360",
+        duration: 1.5,
+        transformOrigin: "50% 50%",
+        ease: "power2.out"
+      });
     }, { });
     
 }
@@ -133,7 +136,8 @@ function setUpCoinCase() {
     coin.classList.add('coin');
     coin.setAttribute("coin-val", ganreOptions[index]);
     const coinIcon =  document.createElement('img');
-    //displayImage.classList.add("project-image")
+    coinIcon.src = "../Imiges/Coin.png"
+    coinIcon.classList.add("iconCoin")
     const coinText = document.createElement('h3');
     coinText.classList.add("coinText")
     coinText.textContent = ganreOptions[index];
@@ -142,9 +146,25 @@ function setUpCoinCase() {
     coinBtn.addEventListener("click", () => {
       addCriteria(ganreOptions[index])
       console.log(queryInputs.genreIn)
-      coin.classList.add("disable");
+
+      const slot = document.querySelector("#coinSlot");
+      const gollrect = slot.getBoundingClientRect();
+      
+      const rect = coinBtn.getBoundingClientRect();
+      const deltaX = gollrect.left - rect.left-35;
+      const deltaY = gollrect.top - rect.top+10;
+      gsap.to(coinBtn, {
+        x: `+=${deltaX}`,
+        y: `+=${deltaY}`,    
+        duration: 1,    
+        ease: "power2.out",
+        onComplete: () => {
+          coin.classList.add("disable");
+        }
+      });
+      
     }, {});
-    coin.appendChild(coinIcon);
+    coinBtn.appendChild(coinIcon);
     coinBtn.appendChild(coinText);
     coin.appendChild(coinBtn);
     coins.appendChild(coin);
@@ -152,6 +172,7 @@ function setUpCoinCase() {
   box.appendChild(coins);
   const slot = document.querySelector("#coinSlot");
   slot.addEventListener("click", () => {
+          
       box.classList.remove("disable");
   }, {});
   const coinReturn = document.querySelector("#coinReturn");

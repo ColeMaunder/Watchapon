@@ -101,8 +101,14 @@
     padding-right: 10vw;
     padding-top: 5vh;
     #coinSlot{
-        height: 10vh;
-        width: 5vw;
+        height: 15vh;
+        aspect-ratio: 1 /1;
+        background-image: url("../Imiges/CoinSlot.png");
+        background-size: cover; 
+        background-position: center;
+        background-repeat: no-repeat;
+        border: 0;
+        background-color: transparent;
     }
 }
 #knobAria{
@@ -116,7 +122,6 @@
         background-image: url("../Imiges/Nob.png");
         background-size: cover; 
         background-position: center;
-        background-repeat: no-repeat;
         background-repeat: no-repeat;
         border: 0;
         background-color: transparent;
@@ -184,10 +189,17 @@
 .coin{
     color: rgb(0, 136, 255);
     .coinBtn{
-         width: 6vw;
-    aspect-ratio: 1 /1;
+        background-color: transparent;
+        border: 0;
     }
     .coinText{
-        color: #dfa506;
+        color: #312502;
+        transform: translateY(-3.5vw);
+        font-size: 0.9vw;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    .iconCoin{
+        width: 6vw;
+    aspect-ratio: 1 /1;
     }
 }
