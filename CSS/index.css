@@ -138,6 +138,8 @@
     #giftOut{
         height: 40vh;
         width: 20vw;
+        font-size: 4vw;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     }
     .ready{
         background-color: blueviolet;

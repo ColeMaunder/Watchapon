@@ -85,13 +85,16 @@ async function configerKnob() {
     
 }
 async function configerGift() {
-        const id = await ShowSetUPResults();
+  const id = await ShowSetUPResults();
+  const gift = document.querySelector("#giftOut")
     if (id != null) {
-        const gift = document.querySelector("#giftOut")
-        gift.classList.add("ready")
+      gift.classList.add("ready")
+      gift.textContent = "Clame youre prize"
         gift.addEventListener("click", () => {
             GotoReward(id)
         }, {});
+    } else {
+      gift.textContent = "No valid shows"
     }
 }
 
