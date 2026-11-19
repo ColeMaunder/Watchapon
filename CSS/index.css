@@ -91,6 +91,8 @@
     #catalogBtn{
         height: 16vh;
         width: 8vw;
+        font-size: 2vw;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     }
 }
 #coin{
@@ -152,9 +154,12 @@
     align-items: top;
     padding-right: 5vw;
     padding-top: 4vh;
+    
     #coinReturn{
         height: 20vh;
         width: 10vw;
+        font-size: 1.8vw;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     }
 }
 #coinCase{

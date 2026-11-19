@@ -126,7 +126,10 @@ function clearCriteria() {
   queryInputs.genreIn.length = 0;
   coins = document.querySelectorAll(".coin")
   coins.forEach(coin=> {
+    const btn = coin.querySelector(".coinBtn");
+    gsap.set(btn, { x: 0, y: 0,});
     coin.classList.remove("disable");
+    
   });
 }
 function setUpCoinCase() {
@@ -137,7 +140,6 @@ function setUpCoinCase() {
   for (let index = 0; index < ganreOptions.length; index++) {
     const coin = document.createElement('div');
     coin.classList.add('coin');
-    coin.setAttribute("coin-val", ganreOptions[index]);
     const coinIcon =  document.createElement('img');
     coinIcon.src = "./Imiges/Coin.png"
     coinIcon.classList.add("iconCoin")
