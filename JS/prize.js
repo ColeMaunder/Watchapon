@@ -32,6 +32,7 @@ const query = `
       streamingEpisodes {
         url
         site
+        title
       }
   }
 }
@@ -161,8 +162,21 @@ async function SetUpPage() {
     duration.innerText = "General Minutes Per Episode: " + show.duration;
 
     const StartWatch = document.querySelector("#start");
-    const start = show.streamingEpisodes[0];
-    if (start.url != null) {
+    
+    
+    if (show.streamingEpisodes[0] != null) {
+      var start;
+      var startNum = 10000;
+      for (let index = 0; index < show.streamingEpisodes.length; index++) {
+        const match = show.streamingEpisodes[index].title.match(/\d+/);
+        const num = match ? Number(match[0]) : null;
+        if(num < startNum){
+          start = show.streamingEpisodes[index];
+          startNum = num
+        }
+      }
+      
+      console.log(start);
       StartWatch.addEventListener("click", () => {
         const link = start.url;
         window.location.href = link;

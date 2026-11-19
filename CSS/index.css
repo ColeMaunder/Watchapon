@@ -6,12 +6,16 @@
 #window{
     width: 100vw;
     height: 90vh;
-    padding: 2vw;
-    background-color: brown;
+    padding: 3vw;
+    background-image: url("../Imiges/BackgroundIndex.png");
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
     display: flex;
     display: grid;
     grid-template-rows:  5fr 1fr;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas: 
         "largeDisplay smallDisplay"
         "pannal pannal";
@@ -19,12 +23,15 @@
 }
 
 #displayLarge{
+    transform: translateY(-8%) ;
     grid-area: largeDisplay;
     display: flex;
     flex-direction: column;
-    gap: 2vh;
+    gap: 1vh;
+    
     #heading{
         font-size: 100pt;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     }
 }
 #displaysSmall{
@@ -43,7 +50,8 @@
     aspect-ratio: 1 / 1.39;
 }
 #bigDisplay{
-    width:20vw;
+    width:25vw;
+    transform: translateX(30%) ;
 }
 #data{
     grid-area: pannal;
@@ -59,6 +67,12 @@
     background-color: rgb(255, 255, 255);
     display: flex;
     display: grid;
+        background-image: url("../Imiges/wring.png");
+        background-size: cover; 
+        background-position-x:50%;
+        background-position-y:3.1vh;
+        background-repeat: no-repeat;
+        background-size: 71vh;
     grid-template-rows:  1fr 3fr 4fr;
     grid-template-columns: 2fr  4fr;
     grid-template-areas: 
@@ -97,8 +111,15 @@
     justify-content: center;
     align-items: center;
     #knob{
-        height: 30vh;
-        width: 15vw;
+        height: 35vh;
+        aspect-ratio: 1 /1;
+        background-image: url("../Imiges/Nob.png");
+        background-size: cover; 
+        background-position: center;
+        background-repeat: no-repeat;
+        background-repeat: no-repeat;
+        border: 0;
+        background-color: transparent;
     }
 
 }
@@ -108,8 +129,9 @@
     justify-content: left;
     align-items: top;
     padding-left: 5vw;
+    transform: translateY(-20%);
     #giftOut{
-        height: 35vh;
+        height: 40vh;
         width: 20vw;
     }
     .ready{
@@ -126,5 +148,46 @@
     #coinReturn{
         height: 20vh;
         width: 10vw;
+    }
+}
+#coinCase{
+    padding: 2vw;
+    width: 90vw;
+    height: 50vh;
+    background-color: #43270f;
+    
+    bottom: 0;
+    left: 5%;
+    position: fixed;
+    
+}
+.coinsAria{
+    background-color: #2b1700;
+    margin-top: 1vw;
+    margin-left: 2vw;
+    padding: 2vw;
+    height: 50vh;
+    align-content: flex-start; 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3vw;
+}
+#closeCase{
+    background-color: #622A0f;
+    border-color:  #622A0f;
+    font-size: 2vw;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #e2a282 ;
+    height: 3vw;
+    width: 3vw;
+}
+.coin{
+    color: rgb(0, 136, 255);
+    .coinBtn{
+         width: 6vw;
+    aspect-ratio: 1 /1;
+    }
+    .coinText{
+        color: #dfa506;
     }
 }

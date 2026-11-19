@@ -72,11 +72,17 @@
     display: flex;
     justify-content: flex-end;
     .backBtn{
+        background-image: url("../Imiges/BackButton.png");
+        background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: 0;
         bottom: 0;
     left: 0;
         height: 10vw;
         width: 10vw;
         margin: 1vw;
-        margin-right: 1vw;
     }
 }

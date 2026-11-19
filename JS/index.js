@@ -1,4 +1,4 @@
-const queryInputs = { genreIn: ["Action", "fantasy", "drama", "Romance"], perPage: 100, page: 1, durationGreater: 0 };
+const queryInputs = { genreIn: [], perPage: 100, page: 1, durationGreater: 0 };
 const criteria = "$genreIn: [String], $durationGreater: Int";
 const criteriaReverse = " genre_in: $genreIn, duration_greater: $durationGreater";
 const prizeScreen = "HTML/prize.html"
@@ -74,14 +74,15 @@ function GotoReward(id) {
 }
 async function configerKnob() {
     
-    const showid = await ShowSetUPResults();
+    
     const knob = document.querySelector("#knob")
     knob.addEventListener("click", () => {
-        configerGift(showid)
+        configerGift()
     }, { });
     
 }
-function configerGift(id) {
+async function configerGift() {
+        const id = await ShowSetUPResults();
     if (id != null) {
         const gift = document.querySelector("#giftOut")
         gift.classList.add("ready")
@@ -111,5 +112,61 @@ async function setupDisplay() {
   }
   document.querySelector("#loadeScreen").classList.add("disable")
 }
+
+function addCriteria(criteria) {
+  queryInputs.genreIn.push(criteria);
+}
+function clearCriteria() {
+  queryInputs.genreIn.length = 0;
+  coins = document.querySelectorAll(".coin")
+  coins.forEach(coin=> {
+    coin.classList.remove("disable");
+  });
+}
+function setUpCoinCase() {
+  const box = document.querySelector("#coinCase")
+  const coins = document.createElement('div');
+  coins.classList.add("coinsAria")
+    coin.classList.add('coin');
+  for (let index = 0; index < ganreOptions.length; index++) {
+    const coin = document.createElement('div');
+    coin.classList.add('coin');
+    coin.setAttribute("coin-val", ganreOptions[index]);
+    const coinIcon =  document.createElement('img');
+    //displayImage.classList.add("project-image")
+    const coinText = document.createElement('h3');
+    coinText.classList.add("coinText")
+    coinText.textContent = ganreOptions[index];
+    const coinBtn = document.createElement('button');
+    coinBtn.classList.add("coinBtn")
+    coinBtn.addEventListener("click", () => {
+      addCriteria(ganreOptions[index])
+      console.log(queryInputs.genreIn)
+      coin.classList.add("disable");
+    }, {});
+    coin.appendChild(coinIcon);
+    coinBtn.appendChild(coinText);
+    coin.appendChild(coinBtn);
+    coins.appendChild(coin);
+  }
+  box.appendChild(coins);
+  const slot = document.querySelector("#coinSlot");
+  slot.addEventListener("click", () => {
+      box.classList.remove("disable");
+  }, {});
+  const coinReturn = document.querySelector("#coinReturn");
+  coinReturn.addEventListener("click", () => {
+    clearCriteria();
+  }, {});
+
+  const close = document.querySelector("#closeCase");
+  close.addEventListener("click", () => {
+    box.classList.add("disable");
+  }, {});
+}
+function setupPannal() {
+  
+}
 configerKnob();
 setupDisplay();
+setUpCoinCase();
